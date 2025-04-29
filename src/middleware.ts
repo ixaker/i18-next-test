@@ -11,7 +11,7 @@ function getLocale(req: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
-  const baseUrl = process.env.BASE_URL;
+  // const baseUrl = process.env.BASE_URL;
 
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
 
   const redirectPath = `${origin}/${locale}${pathname}`;
 
-  const fullUrl = new URL(redirectPath, baseUrl);
+  const fullUrl = new URL(redirectPath, "https://store.qpart.com.ua");
 
   console.log("fullUrl", fullUrl.toString());
 
