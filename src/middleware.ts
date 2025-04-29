@@ -27,7 +27,7 @@ export function middleware(request: NextRequest) {
 
   const fullUrl = new URL(redirectPath, baseUrl);
 
-  console.log("fullUrl", fullUrl);
+  console.log("fullUrl", fullUrl.toString());
 
   return NextResponse.redirect(fullUrl);
 }
