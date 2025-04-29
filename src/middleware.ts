@@ -11,6 +11,7 @@ function getLocale(req: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const { pathname, origin } = request.nextUrl;
+  const baseUrl = process.env.BASE_URL;
 
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -22,9 +23,11 @@ export function middleware(request: NextRequest) {
 
   console.log("origin", origin);
 
-  const newUrl = `${origin}/${locale}${pathname}`;
+  const redirectPath = `${origin}/${locale}${pathname}`;
 
-  return NextResponse.redirect(new URL(newUrl));
+  const fullUrl = new URL(redirectPath, baseUrl);
+
+  return NextResponse.redirect(fullUrl);
 }
 // export const config = {
 //   matcher: [
