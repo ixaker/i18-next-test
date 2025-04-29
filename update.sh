@@ -5,7 +5,7 @@ set -e
 
 # Выводим информацию о процессе
 echo "Обновление проекта из GitHub..."
-git pull origin main
+git pull origin master
 
 # Устанавливаем зависимости
 echo "Установка зависимостей..."
